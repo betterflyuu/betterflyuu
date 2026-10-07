@@ -1,4 +1,5 @@
 const WHATSAPP_NUMBER = "6285775703845";
+const DISCORD_INVITE = "https://discord.gg/xsttwG5kZv";
 
 const products = [
   [10, 1530], [20, 3060], [30, 4590], [40, 6120], [50, 7650],
@@ -10,6 +11,41 @@ const products = [
 
 const rupiah = n => new Intl.NumberFormat("id-ID").format(n);
 const grid = document.querySelector("#productGrid");
+
+let pendingOrder = null;
+
+function openOrderChoice(robux, price) {
+  pendingOrder = { robux, price };
+  const modal = document.querySelector("#orderChoiceModal");
+  const amount = document.querySelector("#modalAmount");
+  const priceEl = document.querySelector("#modalPrice");
+
+  if (amount) amount.textContent = `${robux} R$`;
+  if (priceEl) priceEl.textContent = `Rp${rupiah(price)}`;
+  modal?.classList.add("open");
+  modal?.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+  setTimeout(() => document.querySelector("#orderChoiceModal .order-option")?.focus(), 80);
+}
+
+function closeOrderChoice() {
+  const modal = document.querySelector("#orderChoiceModal");
+  modal?.classList.remove("open");
+  modal?.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+  pendingOrder = null;
+}
+
+function goToWhatsApp() {
+  if (!pendingOrder) return;
+  const { robux, price } = pendingOrder;
+  const text = `Halo Betterflyuu! 👋\n\nSaya mau pesan ${robux} Robux.\nHarga: Rp${rupiah(price)}\n\nUsername Roblox saya: `;
+  window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
+function goToDiscord() {
+  window.location.href = DISCORD_INVITE;
+}
 
 products.forEach(([robux, price]) => {
   const card = document.createElement("button");
@@ -29,10 +65,20 @@ products.forEach(([robux, price]) => {
   card.addEventListener("click", () => {
     document.querySelectorAll(".product.selected").forEach(el => el.classList.remove("selected"));
     card.classList.add("selected");
-    const text = `Halo Betterflyuu! 👋\n\nSaya mau pesan ${robux} Robux.\nHarga: Rp${rupiah(price)}\n\nUsername Roblox saya: `;
-    window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+    openOrderChoice(robux, price);
   });
   grid.appendChild(card);
+});
+
+document.querySelector("#whatsappOrder")?.addEventListener("click", goToWhatsApp);
+document.querySelector("#discordOrder")?.addEventListener("click", goToDiscord);
+document.querySelector("#closeOrderChoice")?.addEventListener("click", closeOrderChoice);
+document.querySelector("#orderChoiceBackdrop")?.addEventListener("click", closeOrderChoice);
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape" && document.querySelector("#orderChoiceModal")?.classList.contains("open")) {
+    closeOrderChoice();
+  }
 });
 
 document.querySelectorAll("[data-whatsapp-general]").forEach(el => {
