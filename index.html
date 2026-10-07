@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#f1eee9">
-  <meta name="description" content="Betterflyuu Momma Project — top up Robux cepat, aman, dan mudah via WhatsApp.">
-  <title>betterflyuu — Momma Project</title>
+  <meta name="description" content="Betterflyuu Momma Shop — top up Robux cepat, aman, dan mudah via WhatsApp atau Discord.">
+  <title>betterflyuu — Momma Shop</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -23,7 +23,7 @@
       </span>
       <span>
         <strong>betterflyuu</strong>
-        <small>MOMMA PROJECT</small>
+        <small>MOMMA SHOP</small>
       </span>
     </a>
 
@@ -49,7 +49,7 @@
         <div class="eyebrow"><span class="dot"></span> ROBUX TOP UP</div>
         <h1>TOP UP<br><em>ROBUX</em></h1>
         <p class="tagline">FAST&nbsp;&nbsp; / &nbsp;&nbsp;SIMPLE&nbsp;&nbsp; / &nbsp;&nbsp;TRUSTED</p>
-        <p class="hero-text">Dapatkan Robux dengan proses cepat via username. Pilih nominal, klik pesan, lalu lanjutkan semuanya lewat WhatsApp.</p>
+        <p class="hero-text">Dapatkan Robux dengan proses cepat via username. Pilih nominal, lalu tentukan apakah kamu ingin order lewat WhatsApp atau Discord.</p>
 
         <div class="hero-actions">
           <a class="button button-primary" href="#robux">Pilih Robux Sekarang <span>→</span></a>
@@ -120,19 +120,19 @@
       <div class="section-intro">
         <span class="section-label">◼ &nbsp; HOW TO BUY</span>
         <h2>Simple. Just <em>three</em> steps.</h2>
-        <p>Nggak perlu login dan nggak perlu isi formulir panjang.</p>
+        <p>Nggak perlu login dan nggak perlu isi formulir panjang. Pilih jalur order yang paling nyaman buat kamu.</p>
       </div>
       <div class="steps">
         <article><b>01</b><span>01</span><h3>Pilih nominal</h3><p>Pilih jumlah Robux yang kamu mau dari daftar harga.</p></article>
-        <article><b>02</b><span>02</span><h3>Klik pesan</h3><p>Kamu akan langsung diarahkan ke WhatsApp dengan pesan otomatis.</p></article>
-        <article><b>03</b><span>03</span><h3>Lanjut di WhatsApp</h3><p>Kirim pesan dan lanjutkan proses order bersama Betterflyuu.</p></article>
+        <article><b>02</b><span>02</span><h3>Pilih jalur order</h3><p>Setelah memilih nominal, pilih WhatsApp atau Discord sesuai cara order yang kamu mau.</p></article>
+        <article><b>03</b><span>03</span><h3>Lanjut transaksi</h3><p>WhatsApp akan membuka template pesan otomatis. Discord akan membawa kamu langsung ke server untuk membuat ticket.</p></article>
       </div>
     </section>
 
     <section class="about-section" id="about">
       <div class="about-butterfly">🦋</div>
       <div>
-        <span class="section-label">BETTERFLYUU / MOMMA PROJECT</span>
+        <span class="section-label">BETTERFLYUU / MOMMA SHOP</span>
         <h2>Top up should feel <em>easy.</em></h2>
         <p>Betterflyuu dibuat untuk memberikan pengalaman top up Robux yang simpel, cantik, cepat, dan nggak bikin ribet.</p>
         <a class="text-link" href="#" data-whatsapp-general>Chat dengan Betterflyuu →</a>
@@ -143,7 +143,7 @@
   <footer>
     <div>
       <strong>betterflyuu</strong>
-      <span>MOMMA PROJECT</span>
+      <span>MOMMA SHOP</span>
     </div>
     <p>© <span id="year"></span> Betterflyuu. All rights reserved.</p>
   </footer>
@@ -154,6 +154,29 @@
     <a href="#how">How to Buy</a>
     <a href="#about">About</a>
     <a href="#" data-whatsapp-general>WhatsApp ↗</a>
+  </div>
+
+  <div class="order-modal" id="orderChoiceModal" aria-hidden="true">
+    <div class="order-modal-backdrop" id="orderChoiceBackdrop"></div>
+    <div class="order-dialog" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+      <button class="modal-close" id="closeOrderChoice" type="button" aria-label="Tutup">×</button>
+      <div class="modal-kicker">🦋 BETTERFLYUU MOMMA SHOP</div>
+      <h2 id="orderModalTitle">Pilih cara order</h2>
+      <p class="modal-subtitle">Kamu memilih <strong id="modalAmount">100 R$</strong> · <strong id="modalPrice">Rp15.300</strong></p>
+      <div class="order-options">
+        <button class="order-option whatsapp-option" id="whatsappOrder" type="button">
+          <span class="option-icon">◉</span>
+          <span><strong>Order via WhatsApp</strong><small>Template pesan otomatis</small></span>
+          <b>→</b>
+        </button>
+        <button class="order-option discord-option" id="discordOrder" type="button">
+          <span class="option-icon">◈</span>
+          <span><strong>Order via Discord</strong><small>Masuk server & buat ticket</small></span>
+          <b>→</b>
+        </button>
+      </div>
+      <small class="modal-note">Pilih salah satu untuk melanjutkan order.</small>
+    </div>
   </div>
 
   <script src="script.js"></script>
