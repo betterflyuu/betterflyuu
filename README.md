@@ -1,20 +1,20 @@
-# betterflyuu — Momma Project
+# Betterflyuu Momma Shop — Website
 
-Versi awal website top up Robux.
+Minimalist Robux storefront for Betterflyuu Momma Shop.
 
-## Struktur
-- `index.html` — struktur halaman
-- `style.css` — desain responsive
-- `script.js` — daftar harga + tombol WhatsApp
+## Current order flow
+1. Customer selects a Robux amount.
+2. A choice modal appears: WhatsApp or Discord.
+3. WhatsApp opens the existing order template using 085775703845.
+4. Discord opens the Betterflyuu Momma Shop server invite.
 
-## WhatsApp
-Nomor saat ini sudah dipasang di `script.js`:
-`628577503845`
+## Discord
+https://discord.gg/xsttwG5kZv
 
-## Deploy ke Vercel
-1. Upload/push semua file ini ke repository GitHub.
-2. Buka Vercel dan import repository.
-3. Framework Preset: Other / Static.
-4. Deploy.
+## Files
+- `index.html` — page structure + order choice modal
+- `style.css` — responsive styling + modal styling
+- `script.js` — product list, prices, WhatsApp template, Discord routing, interactions
 
-Catatan: harga dan nomor WhatsApp bisa diubah langsung dari `script.js`.
+## Deploy
+Upload the three website files to the existing GitHub repository. No backend is required for this website version.
